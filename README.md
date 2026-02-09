@@ -3,7 +3,6 @@
 
 **Author:** Sebastián Machado  
 **Date:** February 2026  
-**Institution:** [Your Institution]
 
 ---
 
