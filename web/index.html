@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Label Classification</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1> Clasificación Multi-Label</h1>
+            <p class="subtitle">Detecta: <span class="tag">person</span> <span class="tag">chair</span> <span
+                    class="tag">dog</span> <span class="tag">sofa</span></p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="drop-zone" id="dropZone">
+                <div class="drop-icon">📷</div>
+                <p>Arrastra imágenes aquí o haz clic para seleccionar</p>
+                <input type="file" id="fileInput" multiple accept="image/*" hidden>
+            </div>
+        </section>
+
+        <!-- Images Preview -->
+        <section class="images-section" id="imagesSection" style="display: none;">
+            <div class="section-header">
+                <h2>Imágenes</h2>
+                <button class="btn btn-primary" id="predictBtn">🔮 Predecir</button>
+            </div>
+            <div class="images-grid" id="imagesGrid"></div>
+        </section>
+
+        <!-- Predictions Section -->
+        <section class="predictions-section" id="predictionsSection" style="display: none;">
+            <div class="section-header">
+                <h2>Predicciones</h2>
+                <button class="btn btn-secondary" id="retrainBtn">🔄 Reentrenar</button>
+            </div>
+            <div class="predictions-grid" id="predictionsGrid"></div>
+        </section>
+
+        <!-- Retrain Section -->
+        <section class="retrain-section" id="retrainSection" style="display: none;">
+            <div class="section-header">
+                <h2>Corregir Etiquetas</h2>
+                <button class="btn btn-success" id="confirmRetrainBtn"> Confirmar y Reentrenar</button>
+            </div>
+            <p class="retrain-info">Marca las etiquetas correctas para cada imagen:</p>
+            <div class="retrain-grid" id="retrainGrid"></div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="section-header">
+                <h2>Resultados del Reentrenamiento</h2>
+                <button class="btn btn-primary" id="newPredictionBtn"> Nueva Predicción</button>
+            </div>
+            <div class="results-grid" id="resultsGrid"></div>
+        </section>
+
+        <!-- Loading -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loadingText">Procesando...</p>
+        </div>
+
+        <!-- Model Info -->
+        <footer id="modelInfo">
+            <div class="metrics-bar">
+                <span>Modelo: <strong id="modelName">Cargando...</strong></span>
+                <span>F1: <strong id="modelF1">-</strong></span>
+                <span>Precision: <strong id="modelPrecision">-</strong></span>
+                <span>Recall: <strong id="modelRecall">-</strong></span>
+                <span>Accuracy: <strong id="modelAccuracy">-</strong></span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
