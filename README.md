@@ -331,7 +331,7 @@ This project is for educational and research purposes. Unauthorized commercial u
 ## 📧 Contact
 
 For questions or collaboration:
-- **Author:** [Your Name]
-- **Course:** [Course Name]
-- **Institution:** [University Name]
+- **Author:** Sebastián Machado
+- **Email:** salejomac1210@gmail.com
+- **LinkedIn:** www.linkedin.com/in/sebastian-machado-eng
 - **Date:** February 2026
