@@ -199,7 +199,80 @@ mlflow ui --backend-store-uri ./
 
 ---
 
-## 📝 Usage Examples
+## � Getting Pre-trained Models (Quick Start)
+
+If you want to test the application immediately without training models from scratch, you can download the pre-trained models:
+
+### Option 1: Use Pre-trained Models (Recommended for Testing)
+
+**Step 1:** Run the `multilabel_classification_fixed.ipynb` notebook:
+```bash
+jupyter notebook notebooks/multilabel_classification_fixed.ipynb
+```
+
+**Step 2:** Execute all cells. This will:
+- Download the complete MLflow directory with 5 pre-trained models
+- Models included: ResNet50, EfficientNetB0, MobileNetV2, MobileNetV2_FineTuned, Retrained
+
+**Step 3:** Rename and move the downloaded folder:
+```bash
+# The notebook downloads a folder named something like "mlflow_data_backup" or similar
+# Rename it to "mlflow_data" and place it in the project root
+
+# Your structure should look like:
+Multi-Label_Classification_proyectofinal/
+├── mlflow_data/          # <- Downloaded and renamed folder
+│   └── 155436956194197961/
+│       └── models/
+└── Multi-Label_Classification/
+    ├── api/
+    ├── notebooks/
+    └── web/
+```
+
+**Step 4:** Start the API and it will automatically load the best model:
+```bash
+cd Multi-Label_Classification
+.\venv312\Scripts\Activate.ps1
+python -m uvicorn api.main:app --reload --port 8000
+```
+
+### Option 2: Train Your Own Models
+
+Follow the complete workflow in the "Usage Examples" section below.
+
+---
+
+## 🖼️ Frontend Demo
+
+The web interface provides an intuitive drag-and-drop experience for image classification:
+
+### Main Interface
+![Upload Interface](docs/images/upload-interface.png)
+*Drag and drop images or click to select files*
+
+### Prediction Results
+![Predictions](docs/images/predictions.png)
+*Multi-label predictions with confidence scores for each class*
+
+### Retraining Interface
+![Retraining](docs/images/retraining.png)
+*Correct predictions and retrain the model with new data*
+
+### Results After Retraining
+![Results](docs/images/results.png)
+*Compare predictions before and after retraining*
+
+**Features:**
+- 🎨 Modern, responsive design
+- 📊 Real-time confidence bars
+- ✅ Interactive label correction
+- 🔄 Live model retraining
+- 📈 Model metrics display
+
+---
+
+## �📝 Usage Examples
 
 ### Workflow 1: Complete Training (First Time)
 
