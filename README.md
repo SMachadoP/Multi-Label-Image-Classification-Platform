@@ -2,7 +2,7 @@
 
 **Python** · **TensorFlow/Keras** · **FastAPI** · **MLflow** · **Transfer Learning**
 
-**Author:** Sebastián Machado  
+**Author:** Sebastián Machado and Sebastian Verdugo 
 **Date:** February 2026  
 
 ---
@@ -293,5 +293,5 @@ jupyter notebook notebooks/03_prediccion_reentrenamiento.ipynb
 ```
 
 ---
-
-**Authors:** Sebastián Machado and Sebastian Verdugo | **Email:** salejomac1210@gmail.com | **LinkedIn:** [sebastian-machado-eng](https://www.linkedin.com/in/sebastian-machado-eng)
+**Contact**
+**Email:** salejomac1210@gmail.com | **LinkedIn:** [sebastian-machado-eng](https://www.linkedin.com/in/sebastian-machado-eng)
