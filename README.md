@@ -294,4 +294,4 @@ jupyter notebook notebooks/03_prediccion_reentrenamiento.ipynb
 
 ---
 
-**Author:** Sebastián Machado | **Email:** salejomac1210@gmail.com | **LinkedIn:** [sebastian-machado-eng](https://www.linkedin.com/in/sebastian-machado-eng)
+**Authors:** Sebastián Machado and Sebastian Verdugo | **Email:** salejomac1210@gmail.com | **LinkedIn:** [sebastian-machado-eng](https://www.linkedin.com/in/sebastian-machado-eng)
