@@ -166,8 +166,8 @@ Following the proposed methodology and algorithms presented in Section 2, the fo
 
 As shown in Table 1, MobileNetV2 with fine-tuning achieved the best overall performance across all evaluation metrics, obtaining an F1-Score of 0.82, Accuracy of 0.85, Precision of 0.84, and Recall of 0.83 on the test set. This represents a significant improvement (+0.05 F1-Score) compared to the base MobileNetV2 model, demonstrating the effectiveness of the fine-tuning strategy.
 
-![Model Comparison](docs/images/results.png)
-**Figure 1.** Comparative analysis of model performance across five evaluation metrics: accuracy, precision, recall, F1-Score, and Hamming Loss. MobileNetV2 consistently outperforms other architectures across all metrics.
+![Model Comparison](docs/images/image.png)
+**Figure 1.** Comparative analysis of model performance metrics. Visual representation of accuracy, precision, recall, F1-Score, and Hamming Loss across the three evaluated architectures.
 
 ### 4.2 Architecture Analysis
 
@@ -192,7 +192,12 @@ The complete system provides an intuitive web-based interface for end-to-end mul
 
 ### 4.5 Continuous Learning Results
 
-The implemented continuous learning pipeline demonstrated successful adaptation to user corrections through the interactive web interface. Retraining experiments with user-corrected predictions showed consistent improvements, with an average F1-Score increase of +0.03 on the corrected sample set. The data augmentation strategy (10× replication) combined with fine-tuning (30 epochs, learning rate: 0.0001) enabled model adaptation within approximately 2 minutes for batches of 3 corrected images, with automatic versioning via MLflow ensuring traceability and zero-downtime model updates. A total of 5 retraining cycles were conducted, each showing consistent performance improvements without catastrophic forgetting, validating the effectiveness of the incremental learning approach for maintaining model relevance with minimal computational overhead.
+The implemented continuous learning pipeline demonstrated successful adaptation to user corrections through the interactive web interface. Retraining experiments with user-corrected predictions showed consistent improvements, with an average F1-Score increase of +0.03 on the corrected sample set. The data augmentation strategy (10× replication) combined with fine-tuning (30 epochs, learning rate: 0.0001) enabled model adaptation within approximately 2 minutes for batches of 3 corrected images, with automatic versioning via MLflow ensuring traceability and zero-downtime model updates.
+
+![Continuous Learning Performance](docs/images/results.png)
+**Figure 5.** Performance evolution across retraining cycles showing consistent improvements in all metrics (accuracy, precision, recall, F1-Score) and reduction in Hamming Loss, demonstrating effective continuous learning without catastrophic forgetting.
+
+A total of 5 retraining cycles were conducted, each showing consistent performance improvements without catastrophic forgetting, validating the effectiveness of the incremental learning approach for maintaining model relevance with minimal computational overhead.
 
 ---
 
