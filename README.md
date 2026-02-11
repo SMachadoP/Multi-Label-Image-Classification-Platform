@@ -153,6 +153,8 @@ The Multi-Label Classification System follows a three-phase pipeline:
 
 Following the proposed methodology and algorithms presented in Section 2, the following results are obtained:
 
+### 4.1 Model Performance Comparison
+
 **Table 1.** Comparison of model performance metrics on Pascal VOC 2007 test set
 
 | Model | Accuracy | Precision | Recall | F1-Score | Hamming Loss | Training Time |
@@ -162,11 +164,33 @@ Following the proposed methodology and algorithms presented in Section 2, the fo
 | ResNet50 | 0.83 | 0.82 | 0.81 | 0.80 | 0.11 | ~60 min |
 | MobileNetV2 (base) | 0.80 | 0.79 | 0.78 | 0.77 | 0.13 | ~20 min |
 
-As shown in Table 1, MobileNetV2 with fine-tuning achieved the best overall performance across all evaluation metrics, obtaining an F1-Score of 0.82, Accuracy of 0.85, Precision of 0.84, and Recall of 0.83 on the test set. This represents a significant improvement (+0.05 F1-Score) compared to the base MobileNetV2 model, demonstrating the effectiveness of the fine-tuning strategy. The results indicate that MobileNetV2 provides an optimal balance between model complexity (2.78M parameters), inference speed (~15ms per image), and classification performance, making it particularly suitable for production deployment scenarios.
+As shown in Table 1, MobileNetV2 with fine-tuning achieved the best overall performance across all evaluation metrics, obtaining an F1-Score of 0.82, Accuracy of 0.85, Precision of 0.84, and Recall of 0.83 on the test set. This represents a significant improvement (+0.05 F1-Score) compared to the base MobileNetV2 model, demonstrating the effectiveness of the fine-tuning strategy.
 
-ResNet50, despite having 8× more parameters (24.1M) than MobileNetV2, achieved only marginally different results (F1-Score: 0.80 vs 0.82), requiring 3× longer training time (~60 minutes). This suggests that for the specific task of multi-label classification on Pascal VOC 2007 with four target classes, the additional model capacity of ResNet50 does not translate to proportional performance gains. EfficientNetB0 demonstrated competitive performance (F1-Score: 0.81) with moderate computational requirements, positioning it as a viable alternative when balancing accuracy and efficiency.
+![Model Comparison](docs/images/results.png)
+**Figure 1.** Comparative analysis of model performance across five evaluation metrics: accuracy, precision, recall, F1-Score, and Hamming Loss. MobileNetV2 consistently outperforms other architectures across all metrics.
+
+### 4.2 Architecture Analysis
+
+The results indicate that MobileNetV2 provides an optimal balance between model complexity (2.78M parameters), inference speed (~15ms per image), and classification performance, making it particularly suitable for production deployment scenarios. ResNet50, despite having 8× more parameters (24.1M) than MobileNetV2, achieved only marginally different results (F1-Score: 0.80 vs 0.82), requiring 3× longer training time (~60 minutes). This suggests that for the specific task of multi-label classification on Pascal VOC 2007 with four target classes, the additional model capacity of ResNet50 does not translate to proportional performance gains. EfficientNetB0 demonstrated competitive performance (F1-Score: 0.81) with moderate computational requirements, positioning it as a viable alternative when balancing accuracy and efficiency.
+
+### 4.3 Multi-Label Classification Performance
 
 The Hamming Loss metric, which measures the fraction of incorrectly predicted labels, remained consistently low across all models (<0.13), with the fine-tuned MobileNetV2 achieving the lowest value (0.09). This indicates that the sigmoid activation function combined with binary crossentropy loss effectively handles the multi-label classification scenario where images contain multiple objects simultaneously. The analysis reveals that class imbalance in the dataset (person: 60%, chair: 35%, dog: 25%, sofa: 20%) affects model performance, with minority classes exhibiting lower recall rates, particularly for the sofa class.
+
+### 4.4 System Interface and Deployment
+
+The complete system provides an intuitive web-based interface for end-to-end multi-label classification workflow, as illustrated in Figures 2-4.
+
+![Upload Interface](docs/images/upload-interface.png)
+**Figure 2.** Web interface for image upload supporting drag-and-drop functionality and batch processing.
+
+![Predictions View](docs/images/predictions.png)
+**Figure 3.** Real-time prediction results displaying detected classes with confidence scores and probability distributions for each target category.
+
+![Retraining Interface](docs/images/retraining.png)
+**Figure 4.** Interactive label correction interface enabling users to modify predictions and trigger incremental model retraining.
+
+### 4.5 Continuous Learning Results
 
 The implemented continuous learning pipeline demonstrated successful adaptation to user corrections through the interactive web interface. Retraining experiments with user-corrected predictions showed consistent improvements, with an average F1-Score increase of +0.03 on the corrected sample set. The data augmentation strategy (10× replication) combined with fine-tuning (30 epochs, learning rate: 0.0001) enabled model adaptation within approximately 2 minutes for batches of 3 corrected images, with automatic versioning via MLflow ensuring traceability and zero-downtime model updates. A total of 5 retraining cycles were conducted, each showing consistent performance improvements without catastrophic forgetting, validating the effectiveness of the incremental learning approach for maintaining model relevance with minimal computational overhead.
 
